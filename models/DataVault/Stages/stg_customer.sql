@@ -3,7 +3,7 @@
 
 {%- set yaml_metadata -%}
     source_model:
-        'snowflake':'customer'
+        'tpch':'customer'
     ldts: 
     rsrc: '!tpch1'
     hashed_columns:
@@ -19,7 +19,6 @@
 {%- endset -%}
 
     {%- set metadata_dict = fromyaml(yaml_metadata) -%}
-
     {%- set source_model = metadata_dict['source_model'] -%}
     {%- set ldts = metadata_dict['ldts'] -%}
     {%- set rsrc = metadata_dict['rsrc'] -%}
