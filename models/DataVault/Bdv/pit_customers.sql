@@ -7,7 +7,7 @@ hashkey: 'hk_customer_h'
 sat_names: 
     - customer_s_n1
 snapshot_relation: 'snapshot_1'
-snapshot_trigger_column: 'is_latest'
+snapshot_trigger_column: 'is_active'
 dimension_key: 'hk_customer_d'
 custom_rsrc: 'PIT table Customers Test'
 {%- endset -%}    
