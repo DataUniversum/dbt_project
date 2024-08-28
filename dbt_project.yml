@@ -59,8 +59,10 @@ vars:
   datavault4dbt.derived_columns_default_dtype: {"bigquery":"STRING","snowflake":"VARCHAR", "exasol": "VARCHAR (2000000) UTF8", "postgres": "VARCHAR", "redshift": "VARCHAR", "synapse": "VARCHAR"}
 
   #Datatype specific default values
+  #datavault4dbt.error_value__INT: -2
   datavault4dbt.error_value__STRING: '(error)'
   datavault4dbt.error_value_alt__STRING: 'e'
+  #datavault4dbt.unknown_value__INT: -1
   datavault4dbt.unknown_value__STRING: '(unknown)'
   datavault4dbt.unknown_value_alt__STRING: 'u'
 

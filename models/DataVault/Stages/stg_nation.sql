@@ -1,23 +1,15 @@
 
 {%- set yaml_metadata -%}
 source_model:
-    'tpch': 'customer'
+    'tpch': 'nation'
 hashed_columns:
     hk_customer_h:
         - C_CUSTKEY
-    hk_country_h:
-        - C_NATIONKEY
     hd_customer_s:
         is_hashdiff: true
         columns:
-            - C_NAME
-            - C_ADDRESS
-            - C_PHONE
-            - C_MKTSEGMENT
-    hk_customer_country_l:
-        - C_CUSTKEY
-        - C_NATIONKEY
-
+            - N_NAME
+            - N_COMMENT
 ldts: 'current_timestamp'
 rsrc: '!tpch1'
 {%- endset -%}
@@ -35,3 +27,19 @@ datavault4dbt.stage(
     hashed_columns=hashed_columns
     )
 }}
+
+
+
+N_COMMENT
+Varchar
+Yes
+NULL
+N_NAME
+Varchar
+No
+NULL
+N_NATIONKEY
+Number
+No
+NULL
+N_REGIONKEY
