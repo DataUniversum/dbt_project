@@ -1,6 +1,4 @@
 
-{{config(materialized='view', schema='stage')}}
-
 {%- set yaml_metadata -%}
 source_model:
     'tpch': 'customer'
