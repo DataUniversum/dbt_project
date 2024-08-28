@@ -7,7 +7,7 @@ business_keys:
 source_models: 
     - name: stg_customer
       bk_columns:
-        - C_NAME as CUST_NAME
+        - C_NAME
       rsrc: '*Customers*'
 {%- endset -%}
 
