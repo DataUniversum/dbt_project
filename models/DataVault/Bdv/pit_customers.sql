@@ -5,7 +5,7 @@ pit_type: 'PIT Customers'
 tracked_entity: 'customer_h'
 hashkey: 'hk_customer_h'
 sat_names: 
-    - customer_s_n1
+    - customer_s
 snapshot_relation: 'snapshot_1'
 snapshot_trigger_column: 'is_active'
 dimension_key: 'hk_customer_d'

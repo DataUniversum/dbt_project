@@ -3,8 +3,12 @@
 {%- set yaml_metadata -%}
 hashkey: 'hk_customer_h'
 business_keys: 
-    - C_NAME
-source_models: stg_customer
+    - CUST_NAME
+source_models: 
+    - name: stg_customer
+      bk_columns:
+        - C_NAME as CUST_NAME
+      rsrc: '*Customers*'
 {%- endset -%}
 
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}

@@ -90,9 +90,12 @@ models:
       Stages:
         +schema: Stage
         +materialized: view
+        +tags: ["dv","stage"]
       Rdv:
         +schema: Rdv
         +materialized: table
+        +tags: ["dv","rdv"]
       Bdv:
         +schema: Bdv
         +materialized: table
+        +tags: ["dv","bdv"]
