@@ -1,7 +1,7 @@
 {{ config(materialized='view') }}
 
 {%- set yaml_metadata -%}
-sat_v0: 'customer_s_n0'
+sat_v0: 'customer_s_0'
 hashkey: 'hk_customer_h'
 hashdiff: 'hd_customer_s'   
 ledts_alias: 'end_date'

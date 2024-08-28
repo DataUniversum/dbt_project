@@ -1,4 +1,3 @@
-{{ config(materialized='incremental') }}
 
 {%- set yaml_metadata -%}
 parent_hashkey: 'hk_customer_h'

@@ -1,4 +1,4 @@
-{{ config(materialized='incremental') }}
+
 
 {%- set yaml_metadata -%}
 hashkey: 'hk_customer_h'

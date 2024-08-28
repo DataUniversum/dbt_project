@@ -85,7 +85,7 @@ vars:
 models:
   datauniversum:
     # Applies to all files under models/example/
-    Datavault:
+    DataVault:
       +materialized: table
       Stages:
         +schema: Stage
