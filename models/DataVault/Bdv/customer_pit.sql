@@ -2,10 +2,10 @@
 
 {%- set yaml_metadata -%}
 pit_type: 'PIT Customers'
-tracked_entity: 'customer_h'
+tracked_entity: 'rdv_customer_h'
 hashkey: 'hk_customer_h'
 sat_names: 
-    - customer_s
+    - rdv_customer_tpch_s
 snapshot_relation: 'snapshot_1'
 snapshot_trigger_column: 'is_active'
 dimension_key: 'hk_customer_d'

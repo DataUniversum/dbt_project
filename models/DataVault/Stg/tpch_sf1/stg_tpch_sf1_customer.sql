@@ -17,7 +17,7 @@ hashed_columns:
         - C_CUSTKEY
     hk_country_h:
         - C_NATIONKEY
-    hd_customer_s:
+    hd_customer_tpch_s:
         is_hashdiff: true
         columns:
             - C_NAME

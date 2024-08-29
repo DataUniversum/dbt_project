@@ -14,9 +14,9 @@ ldts: 'current_timestamp'
 rsrc: '!tpch_sf1'
 
 hashed_columns:
-    hk_customer_h:
-        - C_CUSTKEY
-    hd_customer_s:
+    hk_country_h:
+        - N_NATIONKEY
+    hd_country_tpch_s:
         is_hashdiff: true
         columns:
             - N_NAME

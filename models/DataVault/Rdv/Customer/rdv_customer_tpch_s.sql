@@ -1,10 +1,16 @@
-{{ config(materialized='view') }}
+/*****************************************************************************
+* CHANGE HISTORY
+**********************
+* Date        Author             Description
+* ==========  ===============    ===============================================
+* 2024-08-29  Jaroslaw Syrokosz  Initial draft              
+*****************************************************************************/
 
 {%- set yaml_metadata -%}
-sat_v0: 'customer_s_0'
+sat_v0: 'rdv_customer_tpch_s_0'
 hashkey: 'hk_customer_h'
-hashdiff: 'hd_customer_s'   
-ledts_alias: 'end_date'
+hashdiff: 'hd_customer_tpch_s'   
+ledts_alias: 'ledts'
 add_is_current_flag: true
 {%- endset -%}    
 
