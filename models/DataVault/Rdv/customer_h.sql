@@ -5,7 +5,7 @@ hashkey: 'hk_customer_h'
 business_keys: 
     - CUST_ID
 source_models: 
-    - name: tpch_sf1_customer
+    - name: stg_tpch_sf1_customer
       bk_columns:
         - C_CUSTKEY
       rsrc: '!tpch_sf1_customer'

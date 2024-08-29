@@ -1,4 +1,12 @@
 ############################################################
+############### tpch_sf1
+############################################################
+{% docs tpch_sf1 %}
+This documentation covers the TPCH_SF1 sample data from SNOWFLAKE_SAMPLE_DATA database.
+TPCH is a decision support benchmark that is used for benchmarking and testing purposes.
+{% enddocs %}
+
+############################################################
 ############### tpch_sf1_customer
 ############################################################
 {% docs tpch_sf1_customer %}
