@@ -1,15 +1,28 @@
-
+/*****************************************************************************
+* CHANGE HISTORY
+**********************
+* Date        Author             Description
+* ==========  ===============    ===============================================
+* 2024-08-29  Jaroslaw Syrokosz  Initial draft              
+*****************************************************************************/
 
 {%- set yaml_metadata -%}
 hashkey: 'hk_customer_h'
 business_keys: 
     - CUST_ID
 source_models: 
-    - name: stg_customer
+    - name: tpch_sf1_nation
       bk_columns:
         - C_CUSTKEY
-      rsrc: '*Customers*'
+      rsrc: '!tpch_sf1_nation'
 {%- endset -%}
+
+{#-*****************************************************************************-#}
+{#-********************** No changes below this point **************************-#}
+{#-*****************************************************************************-#}
+
+{#- Set all hubs to incremental -#}
+{{ config(materialized='incremental') }}
 
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}
 

@@ -7,7 +7,8 @@ src_payload:
     - C_ADDRESS
     - C_PHONE
     - C_MKTSEGMENT
-source_model: 'stg_customer'
+source_model: tpch_sf1_nation
+
 {%- endset -%}    
 
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}

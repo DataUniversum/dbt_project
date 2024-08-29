@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: tpch_sf1
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+    tables:
+      - name: customer
+        description: '{{ doc("tpch_sf1_customer") }}'
+        columns:
+          - name: c_custkey
+            description: '{{ doc("tpch_sf1_customer_custkey") }}'
+          - name: c_name
+            description: '{{ doc("tpch_sf1_customer_name") }}'
+          - name: c_address
+            description: '{{ doc("tpch_sf1_customer_address") }}'
+          - name: c_nationkey
+            description: '{{ doc("tpch_sf1_customer_nationkey") }}'
+          - name: c_phone
+            description: '{{ doc("tpch_sf1_customer_phone") }}'
+          - name: c_acctbal
+            description: '{{ doc("tpch_sf1_customer_acctbal") }}'
+          - name: c_mktsegment
+            description: '{{ doc("tpch_sf1_customer_mktsegment") }}'
+          - name: c_comment
+            description: '{{ doc("tpch_sf1_customer_comment") }}'
+      - name: nation
+        description: '{{ doc("tpch_sf1_nation") }}'
+      - name: orders
+        description: '{{ doc("tpch_sf1_orders") }}'

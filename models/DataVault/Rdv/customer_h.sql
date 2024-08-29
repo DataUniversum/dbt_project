@@ -5,10 +5,10 @@ hashkey: 'hk_customer_h'
 business_keys: 
     - CUST_ID
 source_models: 
-    - name: stg_customer
+    - name: tpch_sf1_customer
       bk_columns:
         - C_CUSTKEY
-      rsrc: '*Customers*'
+      rsrc: '!tpch_sf1_customer'
 {%- endset -%}
 
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}
