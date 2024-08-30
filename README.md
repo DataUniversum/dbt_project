@@ -1,5 +1,13 @@
 # DataUniversum dbt Project
 
+## Table of Contents
+- [Project Structure](#project-structure)
+- [Naming Conventions](#naming-conventions)
+- [Dependencies](#dependencies)
+- [Running the Models](#running-the-models)
+- [Resources](#resources)
+- [Contact Information](#contact-information)
+
 ## Project Structure
 
 Our dbt project is organized as follows:
@@ -20,16 +28,28 @@ project_root/
 ```
 
 - `models/`: Contains all dbt models
-  - `Metadata/`: Models for metadata (schema: Rdv, materialized: table, tags: ["dv","rdv"])
+  - `Metadata/`: Models for metadata
   - `DataVault/`: Data Vault models
-    - `Stg/`: Staging models (schema: Stg, materialized: view, tags: ["dv","stg"])
-    - `Rdv/`: Raw Data Vault models (schema: Rdv, materialized: table, tags: ["dv","rdv"])
-    - `Bdv/`: Business Data Vault models (schema: Bdv, materialized: table, tags: ["dv","bdv"])
+    - `Stg/`: Staging models
+    - `Rdv/`: Raw Data Vault models
+    - `Bdv/`: Business Data Vault models
 - `tests/`: Contains custom data tests
 - `macros/`: Reusable SQL snippets and functions
 - `analysis/`: Custom/ad-hoc queries for analysis needs
 - `seeds/`: Static data files (CSVs) to be loaded into the data warehouse
 - `dbt_project.yml`: Main configuration file for the dbt project
+
+## Naming Conventions
+
+To maintain consistency across the project, we follow these naming conventions:
+
+- Folder Names: Pascal Case
+  - Example: `DataVault`, `Metadata`
+
+- File Names: snake_case
+  - Example: `customer_dimension.sql`, `order_fact.sql`
+
+Please adhere to these conventions when creating new folders or files in the project.
 
 ## Dependencies
 
@@ -115,3 +135,10 @@ Below url outlines two recommended approaches for integrating SqlDBM and dbt in 
 - The second is a query-driven approach where requirements are initially modeled as SQL queries in dbt, with SqlDBM providing essential schema visualization and orientation for complex databases. Both methods leverage SqlDBM's ability to export model metadata as YAML files compatible with dbt, enabling a seamless transition from relational to transformational modeling.
 
 [SqlDBM-dbt Medium url](https://medium.sqldbm.com/the-power-of-synergy-sqldbm-and-dbt-ba2b860a5237)
+
+## Contact Information
+
+For questions, issues, or contributions related to this project, please contact:
+
+- **Project Maintainer:** [Jaroslaw Syrokosz]
+
