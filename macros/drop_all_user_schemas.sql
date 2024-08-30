@@ -1,9 +1,12 @@
+/*****************************************************************************
+* CHANGE HISTORY
+**********************
+* Date        Author             Description
+* ==========  ===============    ===============================================
+* 2024-08-29  Jaroslaw Syrokosz  Initial draft              
+*****************************************************************************/
+
 {# 
-USAGE NOTES:
-- This macro drops all user-created schemas in the specified database.
-- Use with extreme caution, especially in production environments.
-- Requires OWNERSHIP or MANAGE SCHEMA privileges on the target database.
-- The database name is case-insensitive.
 - To use: dbt run-operation drop_all_user_schemas --args '{database: "your_database_name"}'
 - Example: dbt run-operation drop_all_user_schemas --args '{database: "datauniversum"}'
 #}

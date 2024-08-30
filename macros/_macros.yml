@@ -1,0 +1,8 @@
+version: 2
+
+macros:
+  - name: drop_all_user_schemas
+    description: '{{ doc("drop_all_user_schemas") }}'
+    arguments:
+      - name: database
+        type: string
