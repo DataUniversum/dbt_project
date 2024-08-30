@@ -9,11 +9,17 @@
 {%- set yaml_metadata -%}
 control_snap_v0: 'snapshot_0'
 log_logic: 
-    weekly:
-        duration: 1
-        unit: 'YEAR'
-    yearly:
-        forever: true
+        daily:
+            duration: 1
+            unit: 'MONTH'
+        weekly:
+            duration: 1
+            unit: 'MONTH'
+        monthly:
+            duration: 1
+            unit: 'YEAR'
+        yearly:
+            forever: true
 {%- endset -%}    
 
 {#-*****************************************************************************-#}
