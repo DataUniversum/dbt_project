@@ -70,19 +70,19 @@ vars:
   tpch_sf1_source_enabled: true
 
 
-sources:
-  datauniversum:
-    tpch_sf1:
-
 models:
   datauniversum:
     # Applies to all files under models/example/
     DataVault:
       +materialized: table
-      Stages:
-        +schema: Stage
+      Metadata:
+        +schema: Rdv
+        +materialized: table
+        +tags: ["dv","rdv"]      
+      Stg:
+        +schema: Stg
         +materialized: view
-        +tags: ["dv","stage"]
+        +tags: ["dv","stg"]
       Rdv:
         +schema: Rdv
         +materialized: table

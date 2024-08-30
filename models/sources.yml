@@ -1,9 +1,6 @@
 version: 2
 
 sources:
-############################################################
-############### tpch_sf1
-############################################################  
   - name: tpch_sf1
     description: '{{ doc("tpch_sf1") }}'
     database: SNOWFLAKE_SAMPLE_DATA
@@ -12,7 +9,6 @@ sources:
       enabled: "{{ var('tpch_sf1_source_enabled') }}"
 
     tables:
-### customer
       - name: customer
         description: '{{ doc("tpch_sf1_customer") }}'
         columns:
@@ -33,10 +29,8 @@ sources:
           - name: c_comment
             description: '{{ doc("tpch_sf1_customer_comment") }}'
 
-### nation
       - name: nation
         description: '{{ doc("tpch_sf1_nation") }}'
 
-### orders
       - name: orders
         description: '{{ doc("tpch_sf1_orders") }}'
