@@ -14,6 +14,7 @@ project_root/
 │       └── Bdv/
 ├── tests/
 ├── macros/
+├── analysis/
 ├── seeds/
 └── dbt_project.yml
 ```
@@ -26,12 +27,14 @@ project_root/
     - `Bdv/`: Business Data Vault models (schema: Bdv, materialized: table, tags: ["dv","bdv"])
 - `tests/`: Contains custom data tests
 - `macros/`: Reusable SQL snippets and functions
+- `analysis/`: Custom/ad-hoc queries for analysis needs
 - `seeds/`: Static data files (CSVs) to be loaded into the data warehouse
 - `dbt_project.yml`: Main configuration file for the dbt project
 
 ## Dependencies
 
 This project uses the following dbt packages:
+
 - dbt_utils
 - datavault4dbt
 
@@ -44,28 +47,34 @@ To run the models in this project, follow these steps:
 1. Ensure you have dbt installed and configured with your data warehouse.
 
 2. Install project dependencies:
+
    ```
    dbt deps
    ```
+
    This will install the required packages (dbt_utils and datavault4dbt) along with any other dependencies specified in your `packages.yml` file.
 
 3. Run all models:
+
    ```
    dbt run
    ```
 
    To run specific models or directories:
+
    ```
    dbt run --models modelname
    dbt run --models DataVault.Stg
    ```
 
 4. Run tests to ensure data quality:
+
    ```
    dbt test
    ```
 
 5. Generate and view documentation:
+
    ```
    dbt docs generate
    dbt docs serve
@@ -81,9 +90,28 @@ To run the models in this project, follow these steps:
    dbt run-operation macro_name --args '{arg1: value1, arg2: value2}'
    ```
 
-### Resources:
+## Resources:
+
+### DBT
+
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
 - Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
 - Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
 - Find [dbt events](https://events.getdbt.com) near you
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+
+### Datavault4dbt package documentation
+
+The following documentation sheds some light on the dbt-macros that have been developed by Scalefree to make your DataVault-Experience more comfortable!
+In the documentation, the macros and their parameters are explained and further exemplified.
+
+[datavault4dbt wiki](https://github.com/ScalefreeCOM/datavault4dbt/wiki)
+
+### SqlDBM integration with dbt
+
+Below url outlines two recommended approaches for integrating SqlDBM and dbt in data workflows.
+
+- The first is a business-driven, architect-led approach where entities are modeled relationally in SqlDBM before being handed off to engineers for transformation in dbt.
+- The second is a query-driven approach where requirements are initially modeled as SQL queries in dbt, with SqlDBM providing essential schema visualization and orientation for complex databases. Both methods leverage SqlDBM's ability to export model metadata as YAML files compatible with dbt, enabling a seamless transition from relational to transformational modeling.
+
+[SqlDBM-dbt Medium url](https://medium.sqldbm.com/the-power-of-synergy-sqldbm-and-dbt-ba2b860a5237)
