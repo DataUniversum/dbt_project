@@ -59,8 +59,7 @@ This field may contain unstructured data entered by account managers.
 ############################################################
 
 {% docs tpch_sf1_nation %}
-This table contains all order information.
-Orders are updated in real-time as they progress through our system.
+This table contains all Naction (Country) information.
 {% enddocs %}
 
 ############################################################
