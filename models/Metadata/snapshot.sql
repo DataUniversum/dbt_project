@@ -6,23 +6,23 @@
 * 2024-08-29  Jaroslaw Syrokosz  Initial draft              
 *****************************************************************************/
 
-{{ config(materialized='view') }}
-
 {%- set yaml_metadata -%}
 control_snap_v0: 'snapshot_0'
 log_logic: 
-    daily:
-        duration: 3
-        unit: 'MONTH'
     weekly:
         duration: 1
-        unit: 'YEAR'
-    monthly:
-        duration: 5
         unit: 'YEAR'
     yearly:
         forever: true
 {%- endset -%}    
+
+{#-*****************************************************************************-#}
+{#-********************** No changes below this point **************************-#}
+{#-*****************************************************************************-#}
+
+
+{#- Set all snapshot v1 to view -#}
+{{ config(materialized='view') }}
 
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}
 

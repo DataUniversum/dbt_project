@@ -1,12 +1,12 @@
 {{ config(materialized='view') }}
 
 {%- set yaml_metadata -%}
-pit_type: 'PIT Customers'
+pit_type: '!CustomersPIT'
 tracked_entity: 'rdv_customer_h'
 hashkey: 'hk_customer_h'
 sat_names: 
     - rdv_customer_tpch_s
-snapshot_relation: 'snapshot_1'
+snapshot_relation: 'snapshot'
 snapshot_trigger_column: 'is_active'
 dimension_key: 'hk_customer_d'
 custom_rsrc: 'PIT table Customers Test'

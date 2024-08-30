@@ -12,10 +12,8 @@ parent_hashkey: 'hk_country_h'
 src_hashdiff: 'hd_country_tpch_s'
 
 src_payload:
-    - C_NAME
-    - C_ADDRESS
-    - C_PHONE
-    - C_MKTSEGMENT
+    - N_NAME
+    - N_COMMENT
 {%- endset -%}    
 
 {#-*****************************************************************************-#}

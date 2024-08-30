@@ -73,12 +73,12 @@ vars:
 models:
   datauniversum:
     # Applies to all files under models/example/
-    DataVault:
+    Metadata:
+      +schema: Rdv
       +materialized: table
-      Metadata:
-        +schema: Rdv
-        +materialized: table
-        +tags: ["dv","rdv"]      
+      +tags: ["dv","rdv"]    
+    DataVault:
+      +materialized: table  
       Stg:
         +schema: Stg
         +materialized: view
