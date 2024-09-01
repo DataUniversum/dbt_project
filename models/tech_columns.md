@@ -24,3 +24,7 @@ Used in conjunction with LDTS to define the validity period of a record.
 
 Type: TIMESTAMP
 {% enddocs %}
+
+{% docs is_current %}
+Flag indicating if this is the current record.
+{% enddocs %}

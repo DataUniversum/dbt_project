@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: tpch_sf1_customer
-    description: 'tpch_sf1_customer'
-  - name: tpch_sf1_nation
-    description: 'tpch_sf1_nation'
+  - name: stg_tpch_sf1_customer
+    description: '{{ doc("stg_tpch_sf1_customer") }}'
+  - name: stg_tpch_sf1_nation
+    description: '{{ doc("stg_tpch_sf1_nation") }}'

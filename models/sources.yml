@@ -13,21 +13,21 @@ sources:
         description: '{{ doc("tpch_sf1_customer") }}'
         columns:
           - name: c_custkey
-            description: '{{ doc("tpch_sf1_customer_custkey") }}'
+            description: '{{ doc("tpch_sf1_customer_c_custkey") }}'
           - name: c_name
-            description: '{{ doc("tpch_sf1_customer_name") }}'
+            description: '{{ doc("tpch_sf1_customer_c_name") }}'
           - name: c_address
-            description: '{{ doc("tpch_sf1_customer_address") }}'
+            description: '{{ doc("tpch_sf1_customer_c_address") }}'
           - name: c_nationkey
-            description: '{{ doc("tpch_sf1_customer_nationkey") }}'
+            description: '{{ doc("tpch_sf1_customer_c_nationkey") }}'
           - name: c_phone
-            description: '{{ doc("tpch_sf1_customer_phone") }}'
+            description: '{{ doc("tpch_sf1_customer_c_phone") }}'
           - name: c_acctbal
-            description: '{{ doc("tpch_sf1_customer_acctbal") }}'
+            description: '{{ doc("tpch_sf1_customer_c_acctbal") }}'
           - name: c_mktsegment
-            description: '{{ doc("tpch_sf1_customer_mktsegment") }}'
+            description: '{{ doc("tpch_sf1_customer_c_mktsegment") }}'
           - name: c_comment
-            description: '{{ doc("tpch_sf1_customer_comment") }}'
+            description: '{{ doc("tpch_sf1_customer_c_comment") }}'
 
       - name: nation
         description: '{{ doc("tpch_sf1_nation") }}'
