@@ -1,6 +1,7 @@
 version: 2
 
 models:
+  
 ############### rdv_customer_h
   - name: rdv_customer_h
     description: '{{ doc("rdv_customer_h") }}'
