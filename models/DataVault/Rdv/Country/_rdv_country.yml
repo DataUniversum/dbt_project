@@ -1,7 +1,6 @@
 version: 2
 
 models:
-  - name: tpch_sf1_customer
-    description: 'tpch_sf1_customer'
-  - name: tpch_sf1_nation
-    description: 'tpch_sf1_nation'
+  - name: rdv_country_h
+  - name: rdv_country_tpch_s_0
+  - name: rdv_country_tpch_s
