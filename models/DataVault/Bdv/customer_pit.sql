@@ -1,16 +1,26 @@
-{{ config(materialized='view') }}
+/*****************************************************************************
+* CHANGE HISTORY
+**********************
+* Date        Author             Description
+* ==========  ===============    ===============================================
+* 2024-08-29  Jaroslaw Syrokosz  Initial draft              
+*****************************************************************************/
 
 {%- set yaml_metadata -%}
-pit_type: 'PIT Customers'
-tracked_entity: 'customer_h'
+pit_type: '!CustomersPIT'
+tracked_entity: 'rdv_customer_h'
 hashkey: 'hk_customer_h'
 sat_names: 
-    - customer_s_n1
-snapshot_relation: 'snapshot_1'
+    - rdv_customer_tpch_s
+snapshot_relation: 'snapshot'
 snapshot_trigger_column: 'is_active'
 dimension_key: 'hk_customer_d'
 custom_rsrc: 'PIT table Customers Test'
 {%- endset -%}    
+
+{#-*****************************************************************************-#}
+{#-********************** No changes below this point **************************-#}
+{#-*****************************************************************************-#}
 
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}
 
