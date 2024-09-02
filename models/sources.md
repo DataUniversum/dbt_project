@@ -62,6 +62,20 @@ This field may contain unstructured data entered by account managers.
 This table contains all Naction (Country) information.
 {% enddocs %}
 
+{% docs tpch_sf1_nation_n_nationkey %}
+Primary key for the country. 
+This is a unique identifier assigned to each country in our system.
+{% enddocs %}
+
+{% docs tpch_sf1_nation_n_name %}
+Country name. 
+{% enddocs %}
+
+{% docs tpch_sf1_nation_n_comment %}
+Additional comments or notes about the nation.
+This field may contain unstructured data entered by account managers.
+{% enddocs %}
+
 ############################################################
 #tpch_sf1_orders
 ############################################################

@@ -31,6 +31,12 @@ sources:
 
       - name: nation
         description: '{{ doc("tpch_sf1_nation") }}'
-
+        columns:
+          - name: n_nationkey
+            description: '{{ doc("tpch_sf1_nation_n_nationkey") }}'
+          - name: n_name
+            description: '{{ doc("tpch_sf1_nation_n_name") }}'
+          - name: n_comment
+            description: '{{ doc("tpch_sf1_nation_n_comment") }}'
       - name: orders
         description: '{{ doc("tpch_sf1_orders") }}'
