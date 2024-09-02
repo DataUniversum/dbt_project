@@ -9,7 +9,7 @@
 {%- set yaml_metadata -%}
 hashkey: 'hk_country_h'
 business_keys: 
-    - COUTNRY_ID
+    - COUNTRY_ID
 source_models: 
     - name: stg_tpch_sf1_nation
       bk_columns:
