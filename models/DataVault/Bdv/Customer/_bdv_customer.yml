@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: bdv_customer_pit
+    description: '{{ doc("bdv_customer_pit") }}'
