@@ -22,6 +22,11 @@ custom_rsrc: 'PIT table Customers Test'
 {#-********************** No changes below this point **************************-#}
 {#-*****************************************************************************-#}
 
+{#-******
+{{ config(materialized='incremental',
+        post_hook="{{ datavault4dbt.clean_up_pit('snapshot') }}") }}
+******-#}
+
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}
 
 {%- set pit_type = metadata_dict['pit_type'] -%}

@@ -23,6 +23,9 @@ clean-targets: # directories to be removed by `dbt clean`
   - "target"
 #  - "dbt_packages"
 
+dispatch:
+  - macro_namespace: datavault4dbt
+    search_order: ['datauniversum', 'datavault4dbt']
 
 vars:
   #Column Aliases
