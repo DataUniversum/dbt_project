@@ -1,7 +1,79 @@
 version: 2
 
 models:
-  - name: tpch_sf1_customer
-    description: 'tpch_sf1_customer'
-  - name: tpch_sf1_nation
-    description: 'tpch_sf1_nation'
+  
+############### rdv_country_h
+  - name: rdv_country_h
+    description: '{{ doc("rdv_country_h") }}'
+    columns:
+      - name: hk_country_h
+        description: '{{ doc("stg_tpch_sf1_nation_hk_country_h") }}'
+        tests:
+          - unique
+          - not_null
+      - name: country_id
+        description: '{{ doc("rdv_country_h_country_id") }}'
+        tests:
+          - not_null
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+        tests:
+          - not_null
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+        tests:
+          - not_null
+
+############### rdv_country_tpch_s_0
+  - name: rdv_country_tpch_s_0
+    description: '{{ doc("rdv_country_tpch_s_0") }}'
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: 
+            - hk_country_h
+            - ldts
+    columns:
+      - name: hk_country_h
+        description: '{{ doc("stg_tpch_sf1_nation_hk_country_h") }}'
+        tests:
+          - not_null
+          - relationships:
+              field: hk_country_h
+              to: ref('rdv_country_h')
+      - name: hd_country_tpch_s
+        description: '{{ doc("stg_tpch_sf1_nation_hd_country_tpch_s") }}'
+        tests:
+          - not_null
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+        tests:
+          - not_null
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+        tests:
+          - not_null
+      - name: n_name
+        description: '{{ doc("tpch_sf1_nation_n_name") }}'
+      - name: n_comment
+        description: '{{ doc("tpch_sf1_nation_n_comment") }}'
+
+############### rdv_country_tpch_s
+  - name: rdv_country_tpch_s
+    description: '{{ doc("rdv_country_tpch_s") }}'
+    columns:
+      - name: hk_country_h
+        description: '{{ doc("stg_tpch_sf1_nation_hk_country_h") }}'
+      - name: hd_country_tpch_s
+        description: '{{ doc("stg_tpch_sf1_nation_hd_country_tpch_s") }}'
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+      - name: ledts
+        description: '{{ doc("ledts") }}'
+      - name: is_current
+        description: '{{ doc("is_current") }}'
+      - name: n_name
+        description: '{{ doc("tpch_sf1_nation_n_name") }}'
+      - name: n_comment
+        description: '{{ doc("tpch_sf1_nation_n_comment") }}'

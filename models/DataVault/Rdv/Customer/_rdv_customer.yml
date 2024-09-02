@@ -1,12 +1,13 @@
 version: 2
 
 models:
+  
 ############### rdv_customer_h
   - name: rdv_customer_h
     description: '{{ doc("rdv_customer_h") }}'
     columns:
       - name: hk_customer_h
-        description: '{{ doc("rdv_customer_h_hk_customer_h") }}'
+        description: '{{ doc("stg_tpch_sf1_customer_hk_customer_h") }}'
         tests:
           - unique
           - not_null
@@ -33,14 +34,14 @@ models:
             - ldts
     columns:
       - name: hk_customer_h
-        description: '{{ doc("rdv_customer_h_hk_customer_h") }}'
+        description: '{{ doc("stg_tpch_sf1_customer_hk_customer_h") }}'
         tests:
           - not_null
           - relationships:
               field: hk_customer_h
               to: ref('rdv_customer_h')
       - name: hd_customer_tpch_s
-        description: '{{ doc("rdv_customer_tpch_s_0_hd_customer_tpch_s") }}'
+        description: '{{ doc("stg_tpch_sf1_customer_hd_customer_tpch_s") }}'
         tests:
           - not_null
       - name: ldts
@@ -65,9 +66,9 @@ models:
     description: '{{ doc("rdv_customer_tpch_s") }}'
     columns:
       - name: hk_customer_h
-        description: '{{ doc("rdv_customer_h_hk_customer_h") }}'
+        description: '{{ doc("stg_tpch_sf1_customer_hk_customer_h") }}'
       - name: hd_customer_tpch_s
-        description: '{{ doc("rdv_customer_tpch_s_0_hd_customer_tpch_s") }}'
+        description: '{{ doc("stg_tpch_sf1_customer_hd_customer_tpch_s") }}'
       - name: ldts
         description: '{{ doc("ldts") }}'
       - name: rsrc
@@ -90,19 +91,19 @@ models:
     description: '{{ doc("rdv_customer_country_l") }}'
     columns:
       - name: hk_customer_country_l
-        description: '{{ doc("rdv_customer_country_l_hk_customer_country_l") }}'
+        description: '{{ doc("stg_tpch_sf1_customer_hk_customer_country_l") }}'
         tests:
           - unique
           - not_null
       - name: hk_customer_h
-        description: '{{ doc("rdv_customer_h_hk_customer_h") }}'
+        description: '{{ doc("stg_tpch_sf1_customer_hk_customer_h") }}'
         tests:
           - not_null
           - relationships:
               field: hk_customer_h
               to: ref('rdv_customer_h')
       - name: hk_country_h
-        description: '{{ doc("rdv_country_h_hk_country_h") }}'
+        description: '{{ doc("stg_tpch_sf1_customer_hk_country_h") }}'
         tests:
           - not_null
           - relationships:
