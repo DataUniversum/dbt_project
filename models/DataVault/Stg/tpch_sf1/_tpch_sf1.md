@@ -1,5 +1,5 @@
 ############################################################
-#stg_tpch_sf1_customer
+### stg_tpch_sf1_customer
 ############################################################
 {% docs stg_tpch_sf1_customer %}
 This view is part of the staging layer and represents customer data from the TPC-H SF1 dataset. It includes both source columns and generated hash keys for use in the Data Vault model.
@@ -26,7 +26,7 @@ Hash key for the Customer-Country link. This is a unique identifier for each cus
 
 
 ############################################################
-#stg_tpch_sf1_nation
+### stg_tpch_sf1_nation
 ############################################################
 {% docs stg_tpch_sf1_nation %}
 This view is part of the staging layer and represents nation data from the TPC-H SF1 dataset. It includes both source columns and generated hash keys for use in the Data Vault model.

@@ -1,5 +1,5 @@
 ############################################################
-#rdv_customer_h
+### rdv_customer_h
 ############################################################
 
 {% docs rdv_customer_h %}
@@ -12,7 +12,7 @@ The original customer ID from the source system.
 
 
 ############################################################
-#rdv_customer_tpch_s_0
+### rdv_customer_tpch_s_0
 ############################################################
 {% docs rdv_customer_tpch_s_0 %}
 This transient table is part of the Raw Data Vault (RDV) layer and serves as the initial load table for the Customer TPC-H Satellite. It stores the attributes of customers from the TPC-H dataset.
@@ -20,7 +20,7 @@ This transient table is part of the Raw Data Vault (RDV) layer and serves as the
 
 
 ############################################################
-#rdv_customer_tpch_s
+### rdv_customer_tpch_s
 ############################################################
 
 {% docs rdv_customer_tpch_s %}
@@ -32,7 +32,7 @@ Flag indicating if this is the current record.
 {% enddocs %}
 
 ############################################################
-#rdv_customer_country_l
+### rdv_customer_country_l
 ############################################################
 {% docs rdv_customer_country_l %}
 This transient table is part of the Raw Data Vault (RDV) layer and serves as the Link table between Customer and Country entities. It represents the relationship between customers and their associated countries.

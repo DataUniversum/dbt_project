@@ -1,5 +1,5 @@
 ############################################################
-#rdv_country_h
+### rdv_country_h
 ############################################################
 
 {% docs rdv_country_h %}
@@ -12,7 +12,7 @@ The original country ID from the source system.
 
 
 ############################################################
-#rdv_country_tpch_s_0
+### rdv_country_tpch_s_0
 ############################################################
 {% docs rdv_country_tpch_s_0 %}
 This transient table is part of the Raw Data Vault (RDV) layer and serves as the initial load table for the country TPC-H Satellite. It stores the attributes of countrys from the TPC-H dataset.
@@ -20,7 +20,7 @@ This transient table is part of the Raw Data Vault (RDV) layer and serves as the
 
 
 ############################################################
-#rdv_country_tpch_s
+### rdv_country_tpch_s
 ############################################################
 
 {% docs rdv_country_tpch_s %}
