@@ -1,7 +1,8 @@
-#datavault4dbt model templates
+# datavault4dbt model templates
 Find below templates ready for copy-and-paste to create SQL models for Data Vault objects using datavault4dbt macros.
 
-##DV Stage template
+## DV Stage template
+ ```
 /*****************************************************************************
 * CHANGE HISTORY
 **********************
@@ -22,8 +23,6 @@ hashed_columns:
         - ##business_key_2## -- OPTIONAL, if business key is a composite key
     
     {#- OPTIONAL - remove if not used. -#}
-    {#- Provide definition of hash diff, if DV stage object contains satellite payload(s). -#}
-    {#- In case you have multi-active key, they have to be included in the hashdiff. -#}
     ##hash_diff_name##:
         is_hashdiff: true
         columns:
@@ -83,8 +82,10 @@ hashed_columns:
                         prejoined_columns=prejoined_columns,
                         missing_columns=missing_columns,
                         multi_active_config=multi_active_config) }}
+ ```
 
-##Hub template
+## Hub template
+ ```
 /*****************************************************************************
 * CHANGE HISTORY
 **********************
@@ -127,3 +128,4 @@ source_models:
 {{ datavault4dbt.hub(hashkey=hashkey,
                     business_keys=business_keys,
                     source_models=source_models) }}
+ ```
