@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Project Structure](#project-structure)
 - [Naming Conventions](#naming-conventions)
+- [Templates](#templates)
 - [Dependencies](#dependencies)
 - [Running the Models](#running-the-models)
 - [Resources](#resources)
@@ -37,7 +38,9 @@ project_root/
 - `macros/`: Reusable SQL snippets and functions
 - `analysis/`: Custom/ad-hoc queries for analysis needs
 - `seeds/`: Static data files (CSVs) to be loaded into the data warehouse
+- `_templates/`: Contains custom models and test templates
 - `dbt_project.yml`: Main configuration file for the dbt project
+
 
 ## Naming Conventions
 
@@ -50,6 +53,11 @@ To maintain consistency across the project, we follow these naming conventions:
   - Example: `customer_dimension.sql`, `order_fact.sql`
 
 Please adhere to these conventions when creating new folders or files in the project.
+
+## Templates
+Templates provide reusable structures for common coding patterns.
+
+Templates for both model and generic test in yaml files can be access under the `_templates/` forlder and related .md file
 
 ## Dependencies
 
