@@ -22,3 +22,19 @@ dbt run-operation drop_all_user_schemas --args '{database: "datauniversum"}'
 - `database` (string): The name of the Snowflake database where schemas should be dropped. This parameter is case-insensitive.
 
 {% enddocs %}
+
+
+{% docs generate_schema_name_example %}
+## Overvieww
+This macro overrides dbt's default schema generation behavior. It prioritizes schemas defined in dbt_project.yml and only falls back to profile.yml schema when no custom schema is specified.
+
+## Arguments:
+custom_schema_name: Schema name from dbt_project.yml
+node: DBT node object containing model information
+
+## Returns:
+Schema name to be used for the model
+
+## Usage:
+No need to do anything. It is used automatically by dbt.
+{% enddocs %}

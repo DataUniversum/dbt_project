@@ -1,0 +1,11 @@
+packages:
+  - name: dbt_utils
+    package: dbt-labs/dbt_utils
+    version: 1.2.0
+  - name: datavault4dbt
+    package: ScalefreeCOM/datavault4dbt
+    version: 1.4.0
+  - name: dbt_artifacts
+    package: brooklyn-data/dbt_artifacts
+    version: 2.10.0
+sha1_hash: 3969cd59693fb98b71911aa4453b3a0318b22a61

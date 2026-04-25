@@ -6,3 +6,10 @@ macros:
     arguments:
       - name: database
         type: string
+  - name: generate_schema_name_example
+    description: "{{ doc('generate_schema_name_example') }}"
+    arguments:
+      - name: custom_schema_name
+        type: string
+      - name: node
+        type: dict
