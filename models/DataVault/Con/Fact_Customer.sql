@@ -10,7 +10,7 @@ with customer_count as (
         ,count(distinct hk_customer_h) as unique_customer_count
     from {{ ref('bdv_customer_pit') }}
     {% if is_incremental() %}
-    where sdts >= current_date - interval '5 days'
+    where sdts >= current_date - interval '7 days'
     {% endif %}
     group by all
 )
