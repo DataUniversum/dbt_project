@@ -29,17 +29,19 @@ models:
     description: '{{ doc("rdv_country_tpch_s_0") }}'
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns: 
-            - hk_country_h
-            - ldts
+          arguments:
+            combination_of_columns:
+              - hk_country_h
+              - ldts
     columns:
       - name: hk_country_h
         description: '{{ doc("stg_tpch_sf1_nation_hk_country_h") }}'
         tests:
           - not_null
           - relationships:
-              field: hk_country_h
-              to: ref('rdv_country_h')
+              arguments:
+                to: ref('rdv_country_h')
+                field: hk_country_h
       - name: hd_country_tpch_s
         description: '{{ doc("stg_tpch_sf1_nation_hd_country_tpch_s") }}'
         tests:

@@ -29,17 +29,19 @@ models:
     description: '{{ doc("rdv_customer_tpch_s_0") }}'
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns: 
-            - hk_customer_h
-            - ldts
+          arguments:
+            combination_of_columns:
+              - hk_customer_h
+              - ldts
     columns:
       - name: hk_customer_h
         description: '{{ doc("stg_tpch_sf1_customer_hk_customer_h") }}'
         tests:
           - not_null
           - relationships:
-              field: hk_customer_h
-              to: ref('rdv_customer_h')
+              arguments:
+                field: hk_customer_h
+                to: ref('rdv_customer_h')
       - name: hd_customer_tpch_s
         description: '{{ doc("stg_tpch_sf1_customer_hd_customer_tpch_s") }}'
         tests:
@@ -100,15 +102,17 @@ models:
         tests:
           - not_null
           - relationships:
-              field: hk_customer_h
-              to: ref('rdv_customer_h')
+              arguments:
+                field: hk_customer_h
+                to: ref('rdv_customer_h')
       - name: hk_country_h
         description: '{{ doc("stg_tpch_sf1_customer_hk_country_h") }}'
         tests:
           - not_null
           - relationships:
-              field: hk_country_h
-              to: ref('rdv_country_h')
+              arguments:
+                field: hk_country_h
+                to: ref('rdv_country_h')
       - name: ldts
         description: '{{ doc("ldts") }}'
         tests:
