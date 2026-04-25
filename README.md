@@ -133,20 +133,4 @@ To run the models in this project, follow these steps:
 The following documentation sheds some light on the dbt-macros that have been developed by Scalefree to make your DataVault-Experience more comfortable!
 In the documentation, the macros and their parameters are explained and further exemplified.
 
-[datavault4dbt wiki](https://github.com/ScalefreeCOM/datavault4dbt/wiki)
-
-### SqlDBM integration with dbt
-
-Below url outlines two recommended approaches for integrating SqlDBM and dbt in data workflows.
-
-- The first is a business-driven, architect-led approach where entities are modeled relationally in SqlDBM before being handed off to engineers for transformation in dbt.
-- The second is a query-driven approach where requirements are initially modeled as SQL queries in dbt, with SqlDBM providing essential schema visualization and orientation for complex databases. Both methods leverage SqlDBM's ability to export model metadata as YAML files compatible with dbt, enabling a seamless transition from relational to transformational modeling.
-
-[SqlDBM-dbt Medium url](https://medium.sqldbm.com/the-power-of-synergy-sqldbm-and-dbt-ba2b860a5237)
-
-## Contact Information
-
-For questions, issues, or contributions related to this project, please contact:
-
-- **Project Maintainer:** [Jaroslaw Syrokosz]
-
+[datavault4dbt documentation](https://www.datavault4dbt.com/documentation/)

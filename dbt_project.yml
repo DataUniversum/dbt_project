@@ -71,6 +71,8 @@ vars:
   #DataUnviersum variables
   tpch_sf1_source_enabled: true
 
+on-run-end:
+  - "{{ dbt_artifacts.upload_results(results) }}"
 
 models:
   datauniversum:
@@ -78,7 +80,7 @@ models:
     Metadata:
       +schema: Rdv
       +materialized: table
-      +tags: ["dv","rdv"]    
+      +tags: ["dv","rdv"]
     DataVault:
       +materialized: table  
       Stg:
@@ -93,3 +95,14 @@ models:
         +schema: Bdv
         +materialized: table
         +tags: ["dv","bdv"]
+      Con:
+        +schema: Con
+        +materialized: table
+        +tags: ["con"]
+
+# artifacts setup to remove additional views, just keep soruce tables
+  dbt_artifacts:
+    +schema: Logs
+    +enabled: false
+    sources:
+      +enabled: true
