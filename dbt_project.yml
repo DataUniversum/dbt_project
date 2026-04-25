@@ -72,7 +72,7 @@ vars:
   tpch_sf1_source_enabled: true
 
 on-run-end:
-  - "{% if target.name == 'default' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
+  - "{% if not target.schema.startswith('dbt_cloud_pr_') %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
 
 models:
   datauniversum:
