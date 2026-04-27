@@ -20,7 +20,8 @@ project_root/
 │   └── DataVault/
 │       ├── Stg/
 │       ├── Rdv/
-│       └── Bdv/
+│       ├── Bdv/
+│       └── Con/
 ├── tests/
 ├── macros/
 ├── analysis/
@@ -53,6 +54,53 @@ To maintain consistency across the project, we follow these naming conventions:
   - Example: `customer_dimension.sql`, `order_fact.sql`
 
 Please adhere to these conventions when creating new folders or files in the project.
+
+### Data Vault Object Naming
+
+All Data Vault objects use **singular** entity names (e.g. `customer`, not `customers`).
+
+#### Prefixes
+
+| Layer          | Prefix  | Example                        |
+|----------------|---------|--------------------------------|
+| Raw Data Vault | `rdv_`  | `rdv_customer_h`               |
+| Business Vault | `bdv_`  | `bdv_customer_h`               |
+
+#### Suffixes
+
+| Object Type         | Suffix | Example                        |
+|---------------------|--------|--------------------------------|
+| Hub                 | `_h`   | `rdv_customer_h`               |
+| Link                | `_l`   | `rdv_order_customer_l`         |
+| Satellite           | `_s`   | `rdv_customer_tpch_sf1_s`      |
+| Effectivity Sat     | `_s`   | `rdv_lineitem_effectivity_s`   |
+
+#### Satellite Naming
+
+Satellites include the **source system name** to reflect their origin, making multi-source scenarios explicit:
+
+```
+rdv_{entity}_{source_system}_s
+```
+
+Examples:
+- `rdv_customer_tpch_sf1_s` — customer satellite from TPC-H SF1
+- `rdv_order_tpch_sf1_s` — order satellite from TPC-H SF1
+- `rdv_lineitem_effectivity_s` — effectivity satellite for line item (bi-temporal)
+- `rdv_lineitem_details_s` — details satellite for line item
+
+#### Full Examples
+
+| Object                        | Name                              |
+|-------------------------------|-----------------------------------|
+| Customer Hub                  | `rdv_customer_h`                  |
+| Order Hub                     | `rdv_order_h`                     |
+| Order-Customer Link           | `rdv_order_customer_l`            |
+| LineItem Link                 | `rdv_lineitem_l`                  |
+| Customer Satellite            | `rdv_customer_tpch_sf1_s`         |
+| Order Satellite               | `rdv_order_tpch_sf1_s`            |
+| LineItem Effectivity Satellite| `rdv_lineitem_effectivity_s`      |
+| LineItem Details Satellite    | `rdv_lineitem_details_s`          |
 
 ## Templates
 Templates provide reusable structures for common coding patterns.

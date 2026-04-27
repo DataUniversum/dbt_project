@@ -1,5 +1,4 @@
 version: 2
-
 sources:
   - name: tpch_sf1
     description: '{{ doc("tpch_sf1") }}'
@@ -7,7 +6,6 @@ sources:
     schema: TPCH_SF1
     config:
       enabled: "{{ var('tpch_sf1_source_enabled') }}"
-
     tables:
       - name: customer
         description: '{{ doc("tpch_sf1_customer") }}'
@@ -38,5 +36,61 @@ sources:
             description: '{{ doc("tpch_sf1_nation_n_name") }}'
           - name: n_comment
             description: '{{ doc("tpch_sf1_nation_n_comment") }}'
+
       - name: orders
         description: '{{ doc("tpch_sf1_orders") }}'
+        columns:
+          - name: o_orderkey
+            description: '{{ doc("tpch_sf1_orders_o_orderkey") }}'
+          - name: o_custkey
+            description: '{{ doc("tpch_sf1_orders_o_custkey") }}'
+          - name: o_orderstatus
+            description: '{{ doc("tpch_sf1_orders_o_orderstatus") }}'
+          - name: o_totalprice
+            description: '{{ doc("tpch_sf1_orders_o_totalprice") }}'
+          - name: o_orderdate
+            description: '{{ doc("tpch_sf1_orders_o_orderdate") }}'
+          - name: o_orderpriority
+            description: '{{ doc("tpch_sf1_orders_o_orderpriority") }}'
+          - name: o_clerk
+            description: '{{ doc("tpch_sf1_orders_o_clerk") }}'
+          - name: o_shippriority
+            description: '{{ doc("tpch_sf1_orders_o_shippriority") }}'
+          - name: o_comment
+            description: '{{ doc("tpch_sf1_orders_o_comment") }}'
+
+      - name: lineitem
+        description: '{{ doc("tpch_sf1_lineitem") }}'
+        columns:
+          - name: l_orderkey
+            description: '{{ doc("tpch_sf1_lineitem_l_orderkey") }}'
+          - name: l_partkey
+            description: '{{ doc("tpch_sf1_lineitem_l_partkey") }}'
+          - name: l_suppkey
+            description: '{{ doc("tpch_sf1_lineitem_l_suppkey") }}'
+          - name: l_linenumber
+            description: '{{ doc("tpch_sf1_lineitem_l_linenumber") }}'
+          - name: l_quantity
+            description: '{{ doc("tpch_sf1_lineitem_l_quantity") }}'
+          - name: l_extendedprice
+            description: '{{ doc("tpch_sf1_lineitem_l_extendedprice") }}'
+          - name: l_discount
+            description: '{{ doc("tpch_sf1_lineitem_l_discount") }}'
+          - name: l_tax
+            description: '{{ doc("tpch_sf1_lineitem_l_tax") }}'
+          - name: l_returnflag
+            description: '{{ doc("tpch_sf1_lineitem_l_returnflag") }}'
+          - name: l_linestatus
+            description: '{{ doc("tpch_sf1_lineitem_l_linestatus") }}'
+          - name: l_shipdate
+            description: '{{ doc("tpch_sf1_lineitem_l_shipdate") }}'
+          - name: l_commitdate
+            description: '{{ doc("tpch_sf1_lineitem_l_commitdate") }}'
+          - name: l_receiptdate
+            description: '{{ doc("tpch_sf1_lineitem_l_receiptdate") }}'
+          - name: l_shipinstruct
+            description: '{{ doc("tpch_sf1_lineitem_l_shipinstruct") }}'
+          - name: l_shipmode
+            description: '{{ doc("tpch_sf1_lineitem_l_shipmode") }}'
+          - name: l_comment
+            description: '{{ doc("tpch_sf1_lineitem_l_comment") }}'

@@ -5,3 +5,7 @@ models:
     description: '{{ doc("stg_tpch_sf1_customer") }}'
   - name: stg_tpch_sf1_nation
     description: '{{ doc("stg_tpch_sf1_nation") }}'
+  - name: stg_tpch_sf1_orders
+    description: '{{ doc("stg_tpch_sf1_orders") }}'
+  - name: stg_tpch_sf1_lineitem
+    description: '{{ doc("stg_tpch_sf1_lineitem") }}'

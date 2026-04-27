@@ -81,6 +81,140 @@ This field may contain unstructured data entered by account managers.
 ############################################################
 
 {% docs tpch_sf1_orders %}
-This table contains all order information.
-Orders are updated in real-time as they progress through our system.
+This table contains all order header data.
+Each row represents a single order placed by a customer.
+{% enddocs %}
+
+{% docs tpch_sf1_orders_o_orderkey %}
+Primary key for the order.
+This is a unique identifier assigned to each order in the system.
+{% enddocs %}
+
+{% docs tpch_sf1_orders_o_custkey %}
+Foreign key to the customer table.
+Represents the customer who placed the order.
+{% enddocs %}
+
+{% docs tpch_sf1_orders_o_orderstatus %}
+Current status of the order.
+Possible values: O (open), F (fulfilled), P (partially fulfilled).
+{% enddocs %}
+
+{% docs tpch_sf1_orders_o_totalprice %}
+Total price of the order including all line items.
+This is a decimal value representing the monetary amount in the default currency.
+{% enddocs %}
+
+{% docs tpch_sf1_orders_o_orderdate %}
+Date when the order was placed.
+Used as the primary business date for order-level reporting and bi-temporal loading.
+{% enddocs %}
+
+{% docs tpch_sf1_orders_o_orderpriority %}
+Priority classification of the order.
+Possible values: 1-URGENT, 2-HIGH, 3-MEDIUM, 4-NOT SPECIFIED, 5-LOW.
+{% enddocs %}
+
+{% docs tpch_sf1_orders_o_clerk %}
+Identifier of the clerk who processed the order.
+Stored as a string in the format: Clerk#[NUMBER].
+{% enddocs %}
+
+{% docs tpch_sf1_orders_o_shippriority %}
+Shipping priority flag for the order.
+Integer value used to prioritize shipment processing.
+{% enddocs %}
+
+{% docs tpch_sf1_orders_o_comment %}
+Additional comments or notes about the order.
+This field may contain unstructured data entered by order processing staff.
+{% enddocs %}
+
+############################################################
+#tpch_sf1_lineitem
+############################################################
+
+{% docs tpch_sf1_lineitem %}
+This table contains all line item data representing individual items within an order.
+Each row represents a single line item, identified by the combination of order key and line number.
+This is the most granular transactional table in the TPC-H schema.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_orderkey %}
+Foreign key to the orders table.
+Together with l_linenumber forms the composite primary key of the line item.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_partkey %}
+Foreign key to the part table.
+Identifies the part or product included in this line item.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_suppkey %}
+Foreign key to the supplier table.
+Identifies the supplier who fulfilled this line item.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_linenumber %}
+Sequential line number within the order.
+Together with l_orderkey forms the composite primary key of the line item.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_quantity %}
+Quantity of the part ordered in this line item.
+Stored as a decimal value.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_extendedprice %}
+Gross line item price before discount and tax (quantity * part price).
+This is a decimal value representing the monetary amount in the default currency.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_discount %}
+Discount rate applied to this line item.
+Stored as a decimal between 0.00 and 0.10 representing a percentage.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_tax %}
+Tax rate applied to this line item.
+Stored as a decimal representing a percentage.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_returnflag %}
+Return status flag for the line item.
+Possible values: N (not returned), A (return in progress), R (returned).
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_linestatus %}
+Fulfilment status of the line item.
+Possible values: O (open/outstanding), F (fulfilled/shipped).
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_shipdate %}
+Date when the line item was shipped.
+Used as the primary effective date for bi-temporal loading of the effectivity satellite.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_commitdate %}
+Committed delivery date agreed with the customer for this line item.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_receiptdate %}
+Date when the customer received the line item.
+Will be later than l_shipdate by the transit time.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_shipinstruct %}
+Shipping instructions for this line item.
+Possible values: DELIVER IN PERSON, COLLECT COD, NONE, TAKE BACK RETURN.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_shipmode %}
+Mode of transport used to ship this line item.
+Possible values: AIR, RAIL, SHIP, TRUCK, MAIL, FOB, REG AIR.
+{% enddocs %}
+
+{% docs tpch_sf1_lineitem_l_comment %}
+Additional comments or notes about the line item.
+This field may contain unstructured data entered by order processing staff.
 {% enddocs %}
