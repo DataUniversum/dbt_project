@@ -35,8 +35,10 @@ hashed_columns:
     hd_lineitem_details_s:
         is_hashdiff: true
         columns:
-            - L_RETURNFLAG
-            - L_LINESTATUS
+            - L_ORDERKEY
+            - L_LINENUMBER
+            - L_PARTKEY
+            - L_SUPPKEY
             - L_SHIPINSTRUCT
             - L_SHIPMODE
             - L_QUANTITY
