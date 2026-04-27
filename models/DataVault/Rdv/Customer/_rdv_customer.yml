@@ -56,6 +56,8 @@ models:
           - not_null
       - name: c_name
         description: '{{ doc("tpch_sf1_customer_c_name") }}'
+        tests:
+          - not_null
       - name: c_address
         description: '{{ doc("tpch_sf1_customer_c_address") }}'
       - name: c_phone
@@ -80,7 +82,7 @@ models:
       - name: is_current
         description: '{{ doc("is_current") }}'
       - name: c_name
-        description: '{{ doc("tpch_sf1_customer_c_name") }}'
+        description: '{{ doc("tpch_sf1_customer_c_name") }}'      
       - name: c_address
         description: '{{ doc("tpch_sf1_customer_c_address") }}'
       - name: c_phone

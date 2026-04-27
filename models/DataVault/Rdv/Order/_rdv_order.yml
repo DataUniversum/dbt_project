@@ -1,1 +1,140 @@
 version: 2
+ 
+models:
+ 
+############### rdv_order_h
+  - name: rdv_order_h
+    description: '{{ doc("rdv_order_h") }}'
+    columns:
+      - name: hk_order_h
+        description: '{{ doc("stg_tpch_sf1_orders_hk_order_h") }}'
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: '{{ doc("rdv_order_h_order_id") }}'
+        tests:
+          - not_null
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+        tests:
+          - not_null
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+        tests:
+          - not_null
+ 
+############### rdv_order_customer_l
+  - name: rdv_order_customer_l
+    description: '{{ doc("rdv_order_customer_l") }}'
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - hk_order_customer_l
+              - ldts
+    columns:
+      - name: hk_order_customer_l
+        description: '{{ doc("stg_tpch_sf1_orders_hk_order_customer_l") }}'
+        tests:
+          - not_null
+      - name: hk_order_h
+        description: '{{ doc("stg_tpch_sf1_orders_hk_order_h") }}'
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('rdv_order_h')
+                field: hk_order_h
+      - name: hk_customer_h
+        description: '{{ doc("stg_tpch_sf1_orders_hk_customer_h") }}'
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('rdv_customer_h')
+                field: hk_customer_h
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+        tests:
+          - not_null
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+        tests:
+          - not_null
+ 
+############### rdv_order_tpch_s_0
+  - name: rdv_order_tpch_s_0
+    description: '{{ doc("rdv_order_tpch_s_0") }}'
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - hk_order_h
+              - ldts
+    columns:
+      - name: hk_order_h
+        description: '{{ doc("stg_tpch_sf1_orders_hk_order_h") }}'
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('rdv_order_h')
+                field: hk_order_h
+      - name: hd_order_s
+        description: '{{ doc("stg_tpch_sf1_orders_hd_order_s") }}'
+        tests:
+          - not_null
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+        tests:
+          - not_null
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+        tests:
+          - not_null
+      - name: o_orderstatus
+        description: '{{ doc("tpch_sf1_orders_o_orderstatus") }}'
+      - name: o_totalprice
+        description: '{{ doc("tpch_sf1_orders_o_totalprice") }}'
+      - name: o_orderdate
+        description: '{{ doc("tpch_sf1_orders_o_orderdate") }}'
+      - name: o_orderpriority
+        description: '{{ doc("tpch_sf1_orders_o_orderpriority") }}'
+      - name: o_clerk
+        description: '{{ doc("tpch_sf1_orders_o_clerk") }}'
+      - name: o_shippriority
+        description: '{{ doc("tpch_sf1_orders_o_shippriority") }}'
+      - name: o_comment
+        description: '{{ doc("tpch_sf1_orders_o_comment") }}'
+ 
+############### rdv_order_tpch_s
+  - name: rdv_order_tpch_s
+    description: '{{ doc("rdv_order_tpch_s") }}'
+    columns:
+      - name: hk_order_h
+        description: '{{ doc("stg_tpch_sf1_orders_hk_order_h") }}'
+      - name: hd_order_s
+        description: '{{ doc("stg_tpch_sf1_orders_hd_order_s") }}'
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+      - name: ledts
+        description: '{{ doc("ledts") }}'
+      - name: is_current
+        description: '{{ doc("is_current") }}'
+      - name: o_orderstatus
+        description: '{{ doc("tpch_sf1_orders_o_orderstatus") }}'
+      - name: o_totalprice
+        description: '{{ doc("tpch_sf1_orders_o_totalprice") }}'
+      - name: o_orderdate
+        description: '{{ doc("tpch_sf1_orders_o_orderdate") }}'
+      - name: o_orderpriority
+        description: '{{ doc("tpch_sf1_orders_o_orderpriority") }}'
+      - name: o_clerk
+        description: '{{ doc("tpch_sf1_orders_o_clerk") }}'
+      - name: o_shippriority
+        description: '{{ doc("tpch_sf1_orders_o_shippriority") }}'
+      - name: o_comment
+        description: '{{ doc("tpch_sf1_orders_o_comment") }}'
