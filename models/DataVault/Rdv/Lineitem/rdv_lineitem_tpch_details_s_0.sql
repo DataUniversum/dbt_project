@@ -12,6 +12,10 @@ parent_hashkey: 'hk_lineitem_l'
 src_hashdiff: 'hd_lineitem_details_s'
 
 src_payload:
+    - L_ORDERKEY
+    - L_LINENUMBER
+    - L_PARTKEY
+    - L_SUPPKEY
     - L_SHIPINSTRUCT
     - L_SHIPMODE
     - L_QUANTITY
