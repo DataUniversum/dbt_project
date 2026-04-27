@@ -1,1 +1,197 @@
 version: 2
+
+models:
+############### rdv_lineitem_l
+  - name: rdv_lineitem_l
+    description: '{{ doc("rdv_lineitem_l") }}'
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - hk_lineitem_l
+              - ldts
+    columns:
+      - name: hk_lineitem_l
+        description: '{{ doc("stg_tpch_sf1_lineitem_hk_lineitem_l") }}'
+        tests:
+          - not_null
+      - name: hk_order_h
+        description: '{{ doc("stg_tpch_sf1_lineitem_hk_order_h") }}'
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('rdv_order_h')
+                field: hk_order_h
+      - name: hk_part_h
+        description: '{{ doc("stg_tpch_sf1_lineitem_hk_part_h") }}'
+        tests:
+          - not_null
+      - name: hk_supplier_h
+        description: '{{ doc("stg_tpch_sf1_lineitem_hk_supplier_h") }}'
+        tests:
+          - not_null
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+        tests:
+          - not_null
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+        tests:
+          - not_null
+ 
+############### rdv_lineitem_tpch_effectivity_s
+  - name: rdv_lineitem_tpch_effectivity_s
+    description: '{{ doc("rdv_lineitem_tpch_effectivity_s") }}'
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - hk_lineitem_l
+              - ldts
+    columns:
+      - name: hk_lineitem_l
+        description: '{{ doc("stg_tpch_sf1_lineitem_hk_lineitem_l") }}'
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('rdv_lineitem_l')
+                field: hk_lineitem_l
+      - name: hd_lineitem_effectivity_s
+        description: '{{ doc("stg_tpch_sf1_lineitem_hd_lineitem_effectivity_s") }}'
+        tests:
+          - not_null
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+        tests:
+          - not_null
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+        tests:
+          - not_null
+      - name: l_returnflag
+        description: '{{ doc("tpch_sf1_lineitem_l_returnflag") }}'
+      - name: l_linestatus
+        description: '{{ doc("tpch_sf1_lineitem_l_linestatus") }}'
+      - name: l_shipdate
+        description: '{{ doc("tpch_sf1_lineitem_l_shipdate") }}'
+      - name: l_commitdate
+        description: '{{ doc("tpch_sf1_lineitem_l_commitdate") }}'
+      - name: l_receiptdate
+        description: '{{ doc("tpch_sf1_lineitem_l_receiptdate") }}'
+ 
+############### rdv_lineitem_effectivity_s
+  - name: rdv_lineitem_tpch_effectivity_s_v1
+    description: '{{ doc("rdv_lineitem_tpch_effectivity_s") }}'
+    columns:
+      - name: hk_lineitem_l
+        description: '{{ doc("stg_tpch_sf1_lineitem_hk_lineitem_l") }}'
+      - name: hd_lineitem_effectivity_s
+        description: '{{ doc("stg_tpch_sf1_lineitem_hd_lineitem_effectivity_s") }}'
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+      - name: ledts
+        description: '{{ doc("ledts") }}'
+      - name: is_current
+        description: '{{ doc("is_current") }}'
+      - name: l_returnflag
+        description: '{{ doc("tpch_sf1_lineitem_l_returnflag") }}'
+      - name: l_linestatus
+        description: '{{ doc("tpch_sf1_lineitem_l_linestatus") }}'
+      - name: l_shipdate
+        description: '{{ doc("tpch_sf1_lineitem_l_shipdate") }}'
+      - name: l_commitdate
+        description: '{{ doc("tpch_sf1_lineitem_l_commitdate") }}'
+      - name: l_receiptdate
+        description: '{{ doc("tpch_sf1_lineitem_l_receiptdate") }}'
+ 
+############### rdv_lineitem_tpch_details_s
+  - name: rdv_lineitem_tpch_details_s
+    description: '{{ doc("rdv_lineitem_tpch_details_s") }}'
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - hk_lineitem_l
+              - ldts
+    columns:
+      - name: hk_lineitem_l
+        description: '{{ doc("stg_tpch_sf1_lineitem_hk_lineitem_l") }}'
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('rdv_lineitem_l')
+                field: hk_lineitem_l
+      - name: hd_lineitem_details_s
+        description: '{{ doc("stg_tpch_sf1_lineitem_hd_lineitem_details_s") }}'
+        tests:
+          - not_null
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+        tests:
+          - not_null
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+        tests:
+          - not_null
+      - name: l_orderkey
+        description: '{{ doc("tpch_sf1_lineitem_l_orderkey") }}'
+      - name: l_linenumber
+        description: '{{ doc("tpch_sf1_lineitem_l_linenumber") }}'
+      - name: l_partkey
+        description: '{{ doc("tpch_sf1_lineitem_l_partkey") }}'
+      - name: l_suppkey
+        description: '{{ doc("tpch_sf1_lineitem_l_suppkey") }}'
+      - name: l_shipinstruct
+        description: '{{ doc("tpch_sf1_lineitem_l_shipinstruct") }}'
+      - name: l_shipmode
+        description: '{{ doc("tpch_sf1_lineitem_l_shipmode") }}'
+      - name: l_quantity
+        description: '{{ doc("tpch_sf1_lineitem_l_quantity") }}'
+      - name: l_extendedprice
+        description: '{{ doc("tpch_sf1_lineitem_l_extendedprice") }}'
+      - name: l_discount
+        description: '{{ doc("tpch_sf1_lineitem_l_discount") }}'
+      - name: l_tax
+        description: '{{ doc("tpch_sf1_lineitem_l_tax") }}'
+ 
+############### rdv_lineitem_tpch_details_s
+  - name: rdv_lineitem_tpch_details_s_v1
+    description: '{{ doc("rdv_lineitem_tpch_details_s") }}'
+    columns:
+      - name: hk_lineitem_l
+        description: '{{ doc("stg_tpch_sf1_lineitem_hk_lineitem_l") }}'
+      - name: hd_lineitem_details_s
+        description: '{{ doc("stg_tpch_sf1_lineitem_hd_lineitem_details_s") }}'
+      - name: ldts
+        description: '{{ doc("ldts") }}'
+      - name: rsrc
+        description: '{{ doc("rsrc") }}'
+      - name: ledts
+        description: '{{ doc("ledts") }}'
+      - name: is_current
+        description: '{{ doc("is_current") }}'
+      - name: l_orderkey
+        description: '{{ doc("tpch_sf1_lineitem_l_orderkey") }}'
+      - name: l_linenumber
+        description: '{{ doc("tpch_sf1_lineitem_l_linenumber") }}'
+      - name: l_partkey
+        description: '{{ doc("tpch_sf1_lineitem_l_partkey") }}'
+      - name: l_suppkey
+        description: '{{ doc("tpch_sf1_lineitem_l_suppkey") }}'
+      - name: l_shipinstruct
+        description: '{{ doc("tpch_sf1_lineitem_l_shipinstruct") }}'
+      - name: l_shipmode
+        description: '{{ doc("tpch_sf1_lineitem_l_shipmode") }}'
+      - name: l_quantity
+        description: '{{ doc("tpch_sf1_lineitem_l_quantity") }}'
+      - name: l_extendedprice
+        description: '{{ doc("tpch_sf1_lineitem_l_extendedprice") }}'
+      - name: l_discount
+        description: '{{ doc("tpch_sf1_lineitem_l_discount") }}'
+      - name: l_tax
+        description: '{{ doc("tpch_sf1_lineitem_l_tax") }}'
