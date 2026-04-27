@@ -28,3 +28,22 @@ Type: TIMESTAMP
 {% docs is_current %}
 Flag indicating if this is the current record.
 {% enddocs %}
+
+{% docs hashdiff %}
+Hash Diff (HASHDIFF)
+
+A hash of all descriptive attributes in a satellite record.
+Used for delta detection — a change in HASHDIFF triggers a new satellite insert.
+
+Type: VARCHAR
+{% enddocs %}
+
+{% docs effective_from %}
+Effective From (EFFECTIVE_FROM)
+
+The business date from which this record is considered valid.
+Drives bi-temporal queries — separates business time from load time (LDTS).
+Populated from the source business date (e.g. ship date, order date).
+
+Type: TIMESTAMP
+{% enddocs %}

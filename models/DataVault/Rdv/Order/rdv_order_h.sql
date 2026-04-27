@@ -7,18 +7,18 @@
 *****************************************************************************/
 
 {%- set yaml_metadata -%}
-hashkey: 'hk_customer_h'
+hashkey: 'hk_order_h'
 business_keys: 
-    - CUSTOMER_ID
+    - ORDER_ID
 source_models: 
-    - name: stg_tpch_sf1_customer
-      bk_columns:
-        - C_CUSTKEY
-      rsrc: '!tpch_sf1_customer'
     - name: stg_tpch_sf1_orders
       bk_columns:
-        - O_CUSTKEY
+        - O_ORDERKEY
       rsrc: '!tpch_sf1_orders'
+    - name: stg_tpch_sf1_lineitem
+      bk_columns:
+        - L_ORDERKEY
+      rsrc: '!tpch_sf1_lineitem'
 {%- endset -%}
 
 

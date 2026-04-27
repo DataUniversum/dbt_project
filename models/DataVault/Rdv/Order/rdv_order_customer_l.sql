@@ -7,34 +7,31 @@
 *****************************************************************************/
 
 {%- set yaml_metadata -%}
-hashkey: 'hk_customer_h'
-business_keys: 
-    - CUSTOMER_ID
-source_models: 
-    - name: stg_tpch_sf1_customer
-      bk_columns:
-        - C_CUSTKEY
-      rsrc: '!tpch_sf1_customer'
-    - name: stg_tpch_sf1_orders
-      bk_columns:
-        - O_CUSTKEY
-      rsrc: '!tpch_sf1_orders'
-{%- endset -%}
+link_hashkey: 'hk_order_customer_l'
 
+foreign_hashkeys:
+    - 'hk_order_h'
+    - 'hk_customer_h'
+
+source_models:
+    - name: stg_tpch_sf1_orders
+      rsrc_static: '!tpch_sf1_orders'
+{%- endset -%}    
 
 {#-*****************************************************************************-#}
 {#-********************** No changes below this point **************************-#}
 {#-*****************************************************************************-#}
 
-{#- Set all hubs to incremental -#}
+{#- Set all links to incremental -#}
 {{ config(materialized='incremental') }}
 
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}
 
-{%- set hashkey = metadata_dict['hashkey'] -%}
-{%- set business_keys = metadata_dict['business_keys'] -%}
+{%- set link_hashkey = metadata_dict['link_hashkey'] -%}
+{%- set foreign_hashkeys = metadata_dict['foreign_hashkeys'] -%}
 {%- set source_models = metadata_dict['source_models'] -%}
 
-{{ datavault4dbt.hub(hashkey=hashkey,
-                    business_keys=business_keys,
+
+{{ datavault4dbt.link(link_hashkey=link_hashkey,
+                    foreign_hashkeys=foreign_hashkeys,
                     source_models=source_models) }}

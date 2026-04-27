@@ -7,34 +7,29 @@
 *****************************************************************************/
 
 {%- set yaml_metadata -%}
-hashkey: 'hk_customer_h'
-business_keys: 
-    - CUSTOMER_ID
-source_models: 
-    - name: stg_tpch_sf1_customer
-      bk_columns:
-        - C_CUSTKEY
-      rsrc: '!tpch_sf1_customer'
-    - name: stg_tpch_sf1_orders
-      bk_columns:
-        - O_CUSTKEY
-      rsrc: '!tpch_sf1_orders'
-{%- endset -%}
+source_model: stg_tpch_sf1_lineitem
+parent_hashkey: 'hk_lineitem_l'
+src_hashdiff: 'hd_lineitem_details_s'
 
+src_payload:
+    - L_SHIPINSTRUCT
+    - L_SHIPMODE
+    - L_QUANTITY
+    - L_EXTENDEDPRICE
+    - L_DISCOUNT
+    - L_TAX
+{%- endset -%}    
 
 {#-*****************************************************************************-#}
 {#-********************** No changes below this point **************************-#}
 {#-*****************************************************************************-#}
 
-{#- Set all hubs to incremental -#}
+{#- Set all satellites v0 to incremental -#}
 {{ config(materialized='incremental') }}
 
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}
 
-{%- set hashkey = metadata_dict['hashkey'] -%}
-{%- set business_keys = metadata_dict['business_keys'] -%}
-{%- set source_models = metadata_dict['source_models'] -%}
-
-{{ datavault4dbt.hub(hashkey=hashkey,
-                    business_keys=business_keys,
-                    source_models=source_models) }}
+{{ datavault4dbt.sat_v0(parent_hashkey=metadata_dict['parent_hashkey'],
+                        src_hashdiff=metadata_dict['src_hashdiff'],
+                        source_model=metadata_dict['source_model'],
+                        src_payload=metadata_dict['src_payload']) }}
