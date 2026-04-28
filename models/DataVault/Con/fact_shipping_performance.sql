@@ -1,7 +1,4 @@
-{{ config(
-    materialized='view',
-    schema='CON'
-) }}
+{{ config(materialized='view') }}
 
 select
 

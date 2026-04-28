@@ -41,8 +41,8 @@ models:
           - not_null
  
 ############### rdv_lineitem_tpch_effectivity_s
-  - name: rdv_lineitem_tpch_effectivity_s
-    description: '{{ doc("rdv_lineitem_tpch_effectivity_s") }}'
+  - name: rdv_lineitem_tpch_effectivity_s_0
+    description: '{{ doc("rdv_lineitem_tpch_effectivity_s_0") }}'
     tests:
       - dbt_utils.unique_combination_of_columns:
           arguments:
@@ -82,7 +82,7 @@ models:
         description: '{{ doc("tpch_sf1_lineitem_l_receiptdate") }}'
  
 ############### rdv_lineitem_effectivity_s
-  - name: rdv_lineitem_tpch_effectivity_s_v1
+  - name: rdv_lineitem_tpch_effectivity_s
     description: '{{ doc("rdv_lineitem_tpch_effectivity_s") }}'
     columns:
       - name: hk_lineitem_l
@@ -109,8 +109,8 @@ models:
         description: '{{ doc("tpch_sf1_lineitem_l_receiptdate") }}'
  
 ############### rdv_lineitem_tpch_details_s
-  - name: rdv_lineitem_tpch_details_s
-    description: '{{ doc("rdv_lineitem_tpch_details_s") }}'
+  - name: rdv_lineitem_tpch_details_s_0
+    description: '{{ doc("rdv_lineitem_tpch_details_s_0") }}'
     tests:
       - dbt_utils.unique_combination_of_columns:
           arguments:
@@ -160,7 +160,7 @@ models:
         description: '{{ doc("tpch_sf1_lineitem_l_tax") }}'
  
 ############### rdv_lineitem_tpch_details_s
-  - name: rdv_lineitem_tpch_details_s_v1
+  - name: rdv_lineitem_tpch_details_s
     description: '{{ doc("rdv_lineitem_tpch_details_s") }}'
     columns:
       - name: hk_lineitem_l
