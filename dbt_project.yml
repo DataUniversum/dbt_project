@@ -25,6 +25,8 @@ clean-targets: # directories to be removed by `dbt clean`
 dispatch:
   - macro_namespace: datavault4dbt
     search_order: ['datauniversum', 'datavault4dbt']
+  - macro_namespace: dbt_artifacts
+    search_order: ['datauniversum', 'dbt_artifacts']
 
 vars:
   #Column Aliases
@@ -72,7 +74,7 @@ vars:
   tpch_sf1_source_enabled: true
 
 on-run-end:
-  - "{% if not target.schema.startswith('dbt_cloud_pr_') %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
+  - "{% if not target.schema.startswith('dbt_cloud_pr_') %}{{ upload_results(results) }}{% endif %}"
 
 models:
   datauniversum:
