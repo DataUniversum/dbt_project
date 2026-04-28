@@ -26,7 +26,11 @@ select
     d.l_quantity,
     d.l_extendedprice,
     d.l_discount,
-    d.l_tax
+    d.l_tax,
+
+    -- technical columns
+    li.ldts,
+    li.rsrc
  
 from {{ ref('rdv_lineitem_l') }} li
 inner join {{ ref('rdv_lineitem_tpch_effectivity_s') }} ef

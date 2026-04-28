@@ -54,7 +54,7 @@ vars:
   datavault4dbt.timestamp_format: {"bigquery":"%Y-%m-%dT%H-%M-%S","snowflake":"YYYY-MM-DDTHH24:MI:SS", "exasol": "YYYY-mm-dd HH:MI:SS", "postgres": "YYYY-MM-DD HH24:MI:SS", "redshift": "YYYY-MM-DD HH24:MI:SS", "synapse": 126}
   
   datavault4dbt.default_unknown_rsrc: 'SYSTEM'
-  datavault4dbt.default_error_rsrc: 'ERROR'
+  datavault4dbt.default_error_rsrc: 'SYSTEM'
   datavault4dbt.rsrc_default_dtype: {"bigquery":"STRING","snowflake":"VARCHAR", "exasol": "VARCHAR (2000000) UTF8", "postgres": "VARCHAR", "redshift": "VARCHAR", "synapse": "VARCHAR"}
   datavault4dbt.timestamp_default_dtype: {"bigquery":"TIMESTAMP","snowflake":"TIMESTAMP_TZ", "exasol": "TIMESTAMP(3) WITH LOCAL TIME ZONE", "postgres": "TIMESTAMPTZ", "redshift": "TIMESTAMPTZ", "synapse": "datetimeoffset"}
   datavault4dbt.stg_default_dtype: {"bigquery":"STRING","snowflake":"VARCHAR", "exasol": "VARCHAR (2000000) UTF8", "postgres": "VARCHAR", "redshift": "VARCHAR", "synapse": "VARCHAR"}
