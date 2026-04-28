@@ -1,0 +1,21 @@
+version: 2
+
+exposures:
+ 
+  - name: fact_shipments
+    label: Shipment Facts
+    type: analysis
+    maturity: low
+    description: >
+      Analytical views covering shipment and fulfillment metrics derived from the
+      Line Item data model. Includes fulfillment summary (revenue, discount, quantity,
+      product and shipment counts by status and ship month) and shipping performance
+      (transit times, on-time delivery rates, and overdue open lines by ship mode and status).
+    owner:
+      name: Jaroslaw Syrokosz
+      email: jaroslaw.syrokosz@datauniversum.com
+    depends_on:
+      - ref('fact_shipping_performance')
+      - ref('fact_shippments_summary')
+      - ref('bdv_lineitem_current')
+      - source('tpch_sf1', 'lineitem')
