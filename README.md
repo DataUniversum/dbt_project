@@ -352,9 +352,8 @@ yaml and md documentation files use a leading underscore for easier navigation a
 
 ```
 _tpch_sf1.yml        — staging model definitions
-_tpch_sf1_docs.md    — staging doc blocks
-_rdv_customer.yml    — RDV model definitions
-_rdv_customer.md     — RDV doc blocks
+_tpch_sf1.md    — staging doc blocks
+
 ```
 
 > **Note on yaml file granularity:** Currently each layer has a single yaml file covering all models in that folder. As the project grows, it is recommended to split into one yaml per model (e.g. `_rdv_customer.yml`, `_rdv_order.yml`) for easier maintenance. Tools like [dbt-osmosis](https://github.com/z3z1ma/dbt-osmosis) or [dbt-codegen](https://github.com/dbt-labs/dbt-codegen) can assist with generating and managing per-model yaml files.
@@ -365,10 +364,9 @@ Documentation is split across dedicated `.md` files per layer:
 
 | File                  | Covers                                      |
 |-----------------------|---------------------------------------------|
-| `tech_columns.md`     | Shared DV2 technical columns (ldts, rsrc, hashdiff, effective_from, etc.) |
+| `tech_columns.md`     | Shared DV2 technical columns (ldts, rsrc, hashdiff, etc.) |
 | `tpch_sf1_docs.md`    | Source table and column descriptions        |
-| `stg_tpch_sf1_docs.md`| Staging model and hash key descriptions     |
-| `rdv_*_docs.md`       | RDV object descriptions per entity group    |
+| `stg_tpch_sf1.md`| Staging model and hash key descriptions     |
 
 ### Generating Docs
 
