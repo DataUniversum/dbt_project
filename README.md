@@ -28,20 +28,25 @@ The source data is the **TPC-H SF1** benchmark dataset available natively in Sno
 Data Vault 2.0 was chosen because it provides:
 - **Auditability** — every record carries load timestamp and record source, enabling full traceability
 - **Resilience to change** — hub/link/satellite separation means new sources or attributes can be added without breaking existing models
-- **Bi-temporal support** — separation of load time (`ldts`) and business time (`effective_from`) handles late-arriving and backdated data naturally
+- **Multi-temporal support** — separation of load time (`ldts`) and business timelines handles late-arriving and backdated data naturally
 - **Scalability** — parallel loading patterns align well with Snowflake's architecture
-
-> [TODO: Add 2-3 sentences on your personal justification / experience with DV2 in enterprise contexts]
 
 ### Why datavault4dbt?
 
-The `datavault4dbt` package by Scalefree provides battle-tested, parameterised macros for all core DV2 objects (hubs, links, satellites, PITs, bridges). This eliminates boilerplate SQL and enforces consistent patterns across the vault.
+The `datavault4dbt` package by Scalefree provides battle-tested, parameterised macros for all core DV2 objects (hubs, links, satellites, PITs, bridges):
 
-> [TODO: Add note on why you chose this over rolling your own macros]
+- **Closer to DV2.0 specification** than alternatives like `automate_dv`
+- **Greater customisability** — macros are configurable per object without forking the package
+- **TurboVault integration** — enables metadata-driven model generation at scale
+- **Premium Scalefree support** — a practical consideration for enterprise delivery where responsiveness matters
 
 ### Why Snowflake?
 
-> [TODO: Add brief justification — native TPC-H data, scalability, micro-partition pruning per satellite, zero-copy cloning for dev/test, etc.]
+- **Familiarity & certification** — certified and hands-on experience across multiple enterprise implementations
+- **Native TPC-H dataset** — available out of the box in `SNOWFLAKE_SAMPLE_DATA`, no data loading required
+- **Performance** — micro-partition pruning benefits satellite queries significantly, especially on `ldts` range scans
+- **Developer experience** — zero-copy cloning for dev/test environments, time travel for data recovery
+- **Simplicity** — minimal infrastructure overhead, scales automatically, lets the focus stay on the data model
 
 ### Layer Architecture
 
@@ -96,7 +101,7 @@ dbt_project/
 - `macros/`: Reusable SQL snippets and functions
 - `analysis/`: Custom/ad-hoc queries for analysis needs
 - `seeds/`: Static data files (CSVs) to be loaded into the data warehouse
-- `_templates/`: Contains custom model and test templates
+- `docs/`: Contains custom model and test templates
 - `dbt_project.yml`: Main configuration file for the dbt project
 
 ---
@@ -130,9 +135,9 @@ dbt_project/
 
 ### Lineage
 
-> [TODO: Add dbt lineage screenshot here — run `dbt docs generate && dbt docs serve`, navigate to the lineage graph, screenshot the full DAG from source to CON exposure]
+### Lineage
 
-> [TODO: Add second screenshot showing the lineitem subgraph in detail]
+<img src="docs/images/dbt_lineage.png" alt="Full dbt Lineage" width="900"/>
 
 ---
 
