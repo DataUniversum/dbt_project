@@ -208,13 +208,18 @@ This project connects to Snowflake using **key-pair authentication**.
 
 ### Snowflake User Setup
 
-> [TODO: Add Snowflake username]
+This project uses a dedicated service account `DBT_DATAUNIVERSUM_SVC` with role `DBT_DATAUNIVERSUM_ROLE` and `COMPUTE_WH` warehouse. Authentication is via RSA key-pair — no password, no MFA interference.
 
-> [TODO: Add instructions for generating and registering the RSA key pair with the Snowflake user]
+Two environments are configured:
+- **DEV** — database `DATAUNIVERSUM`
+- **PROD** — database `DATAUNIVERSUM_PROD`
 
-> [TODO: Add note on role and warehouse used]
+The RSA public key is registered against the service user in Snowflake. The private key is referenced locally via `private_key_path` in `profiles.yml` and stored securely outside the repository.
+
 
 ### profiles.yml
+
+The `profiles.yml` is stored locally at `~/.dbt/profiles.yml` and is never committed to the repository.
 
 ```yaml
 datauniversum:
@@ -222,18 +227,27 @@ datauniversum:
   outputs:
     dev:
       type: snowflake
-      account: [TODO: account identifier]
-      user: [TODO: username]
-      private_key_path: [TODO: path to private key .p8 file]
-      private_key_passphrase: [TODO: passphrase if applicable]
-      role: [TODO: role]
-      database: [TODO: database]
-      warehouse: [TODO: warehouse]
-      schema: [TODO: default schema]
+      account: <your_account_identifier>
+      user: DBT_DATAUNIVERSUM_SVC
+      private_key_path: ~/.ssh/rsa_key.pem
+      private_key_passphrase: <passphrase_if_applicable>
+      role: DBT_DATAUNIVERSUM_ROLE
+      database: DATAUNIVERSUM
+      warehouse: COMPUTE_WH
+      schema: PUBLIC
+      threads: 4
+    prod:
+      type: snowflake
+      account: <your_account_identifier>
+      user: DBT_DATAUNIVERSUM_SVC
+      private_key_path: ~/.ssh/rsa_key.pem
+      private_key_passphrase: <passphrase_if_applicable>
+      role: DBT_DATAUNIVERSUM_ROLE
+      database: DATAUNIVERSUM_PROD
+      warehouse: COMPUTE_WH
+      schema: PUBLIC
       threads: 4
 ```
-
-> [TODO: Add note on where to store the profiles.yml locally — default is `~/.dbt/profiles.yml`]
 
 ---
 
@@ -241,7 +255,7 @@ datauniversum:
 
 Templates provide reusable structures for common coding patterns.
 
-Templates for both model and generic test yaml files can be accessed under the `_templates/` folder and related `.md` file.
+Templates for both model and generic test yaml files can be accessed under the `docs/_templates/` folder and related `.md` file.
 
 ---
 
@@ -254,8 +268,6 @@ This project uses the following dbt packages:
 - `dbt_artifacts` — logging and monitoring of dbt run metadata, with a local override macro
 
 Ensure these packages are listed in your `packages.yml` file and installed using `dbt deps`.
-
-> [TODO: Add packages.yml snippet]
 
 ---
 
@@ -280,10 +292,10 @@ To run the models in this project, follow these steps:
    To run specific layers:
 
    ```bash
-   dbt run --select DataVault.Stg
-   dbt run --select DataVault.Rdv
-   dbt run --select DataVault.Bdv
-   dbt run --select DataVault.Con
+   dbt run --select tag:stg
+   dbt run --select tag:rdv
+   dbt run --select tag:bdv
+   dbt run --select tag:con
    ```
 
 4. Run all models and tests upstream of an exposure in one command:
@@ -317,27 +329,16 @@ To run the models in this project, follow these steps:
 
 Data quality is enforced at every layer using dbt tests defined in the model yaml files.
 
+Full details on the generic Data Vault test patterns applied in this project are documented in [`docs/_templates/tests/DataVault_generic.md`](docs/_templates/tests/DataVault_generic.md).
+
 ### Generic Tests Applied
 
-| Test                                    | Applied To                        |
-|-----------------------------------------|-----------------------------------|
-| `unique`                                | All hub hash keys                 |
-| `not_null`                              | Hash keys, business keys, `ldts`, `rsrc` |
-| `relationships`                         | Satellite → Hub, Link → Hub       |
-| `dbt_utils.unique_combination_of_columns` | Satellites (hk + ldts), Links   |
-| `accepted_values`                       | > [TODO: add where applied]       |
+Generic tests cover hub uniqueness, null checks on technical and business keys, referential integrity between satellites and hubs, and unique combination of columns on satellites and links. These are applied consistently across all RDV objects.
 
 ### Specific Tests
 
-- **`c_name` not_null** on `rdv_customer_tpch_sf1_s` — ensures customer name is never null, as required by the data quality specification
+- **`c_name` not_null** on `rdv_customer_tpch_sf1_s` — ensures customer name is never null
 - **`n_name` not_null** on `rdv_country_tpch_sf1_s` — ensures country name is never null
-
-### Running Tests by Layer
-
-```bash
-dbt test --select DataVault.Rdv
-dbt test --select DataVault.Bdv
-```
 
 ---
 
@@ -374,9 +375,12 @@ Documentation is split across dedicated `.md` files per layer:
 ```bash
 dbt docs generate
 dbt docs serve
+dbt docs generate --static
 ```
 
-> [TODO: Add screenshot of dbt docs UI showing the lineage and model documentation]
+Static documentation is published and available at:
+
+**[https://datauniversum.github.io/dbt_project/#!/overview](https://datauniversum.github.io/dbt_project/#!/overview)**
 
 ---
 
@@ -399,19 +403,9 @@ To run all models upstream of this exposure:
 dbt build --select +exposure:shipment_facts
 ```
 
-> [TODO: Add screenshot of dbt lineage graph scoped to the shipment_facts exposure]
-
 ---
 
 ## Resources
-
-### DBT
-
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
 
 ### Datavault4dbt
 
